@@ -12,7 +12,7 @@ impl Board {
     }
 
     pub fn print(&self) {
-        for (i, (v, ns)) in self.values.iter().zip(self.neighbours.iter()).enumerate() {
+        for (i, (v, ns)) in self.values.iter().zip(&self.neighbours).enumerate() {
             println!("node: {}, value: {}, neighbours: {:?}", i, v, ns);
         }
     }
@@ -39,7 +39,8 @@ fn main() {
             let mut buf = String::new();
             let _ = std::io::stdin().read_line(&mut buf);
             let mut inputs = buf.split_whitespace();
-            (inputs.next().unwrap().parse().unwrap(), inputs.next().unwrap().parse().unwrap())
+            (inputs.next().unwrap().parse().unwrap(), 
+            inputs.next().unwrap().parse().unwrap())
         };
         board.send(index, value);
         board.print();
