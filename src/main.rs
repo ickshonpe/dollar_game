@@ -24,8 +24,14 @@ impl Board {
 
 fn main() {
     let mut board = Board {
-        values: vec![1, -1],
-        neighbours: vec![vec![1], vec![0]]
+        values: vec![1, -1, -2, 2, 3],
+        neighbours: vec![
+            vec![2, 4],
+            vec![2],
+            vec![0, 1, 4],
+            vec![4],
+            vec![0, 2, 3]
+        ]
     };   
     board.print();
     while !board.solved() {        
